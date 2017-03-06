@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row logo">
+        <img src="images/main_logo.png"></img>
+    </div>
+    
+    <button class="btn btn-outline-danger ask-button" onclick="location.href='ask/create'">질문 등록하기</button>
+    <button id="showBtn" class="btn btn-outline-primary ask-button">질문 목록보기</button>
+    </hr>
+    
+    <% if @asks.size == 0%>
+    <p>등록된 질문이 없습니다.</p>
+    <% else %>
+    <table class="table ask-table">
+        <caption>질문목록</caption>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>작성자</th>
+                <th>글제목</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for ask in @asks %>
+            <tr>
+                <td><%=ask.id%></td>
+                <td><%=ask.author%></td>
+                <td><%= link_to ask.title, controller:"ask", action:"detail", id:ask %></td>
+            </tr>
+            <%end%>
+        </tbody>
+    </table>
+    <% end %>
+    
+</div>

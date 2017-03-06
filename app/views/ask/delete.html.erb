@@ -1,0 +1,19 @@
+<div class="container">
+	<h2 class="top-buffer">질문삭제하기</h2>
+	</hr>
+	
+	<div class="text-center">
+		<form action="/ask/delete" method="post">
+			<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+			<input type="hidden" name="id" value="<%=@ask.id%>"></input>
+			<div class="form">
+				<div class="form-group row">
+					<label class="row" for="password">비밀번호</label></br>
+					<input class="row" type="password" id="password" name="password">	
+				</div>
+				<button class="btn btn-outline-danger" type="submit">삭제</button>	
+			</div>
+		</form>	
+	</div>
+</div>
+

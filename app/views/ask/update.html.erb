@@ -1,0 +1,31 @@
+<div class="container">
+	<h2 class="top-buffer">질문 수정하기</h2>
+	</hr>
+	
+	<div class="text-center">
+		<form action="/ask/update" method="post">
+			<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+			<input type="hidden" name="id" value="<%=@ask.id%>"></input>
+			<div class="form">
+				<div class="form-group row">
+					<label class="col-xs-2" for="author">작성자</label>
+					<input class="col-xs-4" type="text" id="author" name="author" value="<%=@ask.author%>">	
+				</div>
+				<div class="form-group row">
+					<label class="col-xs-2" for="password">비밀번호</label>
+					<input class="col-xs-4" type="password" id="password" name="password">	
+				</div>
+				<div class="form-group row">
+					<label class="col-xs-2" for="title">글제목</label>
+					<input class="col-xs-4" type="text" name="title" value="<%=@ask.title%>">
+				</div>
+				<div class="form-group row">
+					<label class="col-xs-2" for="content">내용</label>
+					<textarea class="col-xs-10" name="content" rows=10><%=@ask.content%></textarea></br>	
+				</div>
+				<button class="btn btn-outline-danger form-bottom-btn" type="submit">수정</button>	
+			</div>
+		</form>	
+	</div>
+</div>
+

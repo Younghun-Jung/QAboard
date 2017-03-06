@@ -1,0 +1,63 @@
+<div class="container">
+    <h2 class="top-buffer">질문 자세히 보기</h2>
+    </hr>
+    <img src="<%=@ask.image%>" style="width:100px;"></img>
+    </br>
+    <button class="btn btn-outline-danger pull-right table-button" onclick="location.href='/ask/delete?id=<%=@ask.id%>'">삭제</button>
+    <button class="btn btn-outline-warning pull-right table-button" onclick="location.href='/ask/update?id=<%=@ask.id%>'">수정</button>
+    <table class="table table-bordered ask-detail-table top-buffer">
+        <tbody>
+            <tr>
+                <th width="10%">작성자</th>
+                <td><%=@ask.author%></td>
+                <th width="10%">작성일</th>
+                <td><%=@ask.created_at.strftime('%Y-%m-%d %H:%M:%S')%></td>
+            </tr>
+            <tr>
+                <th width="10%">글제목</th>
+                <td colspan="3"><%=@ask.title%></td>
+            </tr>
+            <tr>
+                <th width="10%">내용</th>
+                <td colspan="3"><%=@ask.content%></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <button class="btn btn-outline-primary pull-right table-button" onclick="location.href='/'">목록보기</button>
+    <button class="btn btn-outline-success pull-right table-button" onclick="location.href='/answer/create?id=<%=@ask.id%>'">답변</button>
+    <%# link_to '수정', controller: "ask", action: "update", id: @ask %>
+    <%# link_to '삭제', controller: "ask", action: "delete", id: @ask %>
+    <%# link_to '답변', controller: "answer", action: "create", id: @ask %>
+    <%# link_to '목록', controller: "ask", action: "list" %>
+    <hr style="clear:right; margin-top:75px;" class="top-buffer">
+    
+    <div class="row top-buffer">
+        <% if @answers.size == 0 %>
+        <p>답변이 아직 없습니다.</p>
+        <%else%>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th width="10%">작성자</th>
+                    <th>답변</th>
+                    <th width="10%">수정</th>
+                    <th width="10%">삭제</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for answer in @answers%>
+                <tr>
+                    <td width="10%"><%=answer.author%></td>
+                    <td><%=answer.content%></td>
+                    <td width="10%"><%= link_to '수정', controller: "answer", action: "update", id: answer.id, ask_id: answer.ask_id %></td>
+                    <td width="10%"><%= link_to '삭제', controller: "answer", action: "delete", id: answer.id, ask_id: answer.ask_id %></td>
+                </tr>
+                <%end%>
+            </tbody>
+        </table>
+        <%end%>
+    </div>
+    
+</div>
+

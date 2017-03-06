@@ -1,0 +1,33 @@
+<div class="container">
+	<h2 class="top-buffer">질문을 작성해주세요.</h2>
+	</hr>
+	</br>
+	
+	<div class="text-center">
+		<form action="/ask/create" method="post" enctype="multipart/form-data">
+			<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+			<div class="form">
+				<div class="form-group row">
+					<label class="col-xs-2" for="author">작성자</label>
+					<input class="col-xs-4" type="text" id="author" name="author">	
+				</div>
+				<div class="form-group row">
+					<label class="col-xs-2" for="password">비밀번호</label>
+					<input class="col-xs-4" type="password" id="password" name="password">	
+				</div>
+				<div class="form-group row">
+					<label class="col-xs-2" for="title">글제목</label>
+					<input class="col-xs-4" type="text" name="title">
+				</div>
+				<div class="form-group row">
+					<label class="col-xs-2" for="content">내용</label>
+					<textarea class="col-xs-10" name="content" rows=10></textarea></br>	
+				</div>
+				<input type="file" name="image" placeholder="첨부 이미지.."></input>
+				<button class="btn btn-outline-success form-bottom-btn" type="submit">등록</button>	
+			</div>
+		</form>	
+	</div>
+	
+</div>
+
